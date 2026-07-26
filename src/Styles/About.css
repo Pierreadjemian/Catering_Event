@@ -1,0 +1,85 @@
+
+.about-page {
+  --cream: #faf6ee;
+  --card: #fffdf8;
+  --ink: #262420;
+  --ink-soft: #6e6656;
+  --green: #3e5c46;
+  --mustard: #b5822a;
+  --rust: #a15436;
+  --teal: #2f5a5c;
+
+  min-height: 100vh;
+  width: 100%;
+  background-color: var(--cream);
+  padding: 4.5rem 1.25rem 5rem;
+  box-sizing: border-box;
+  font-family: 'DM Sans', sans-serif;
+  color: var(--ink);
+}
+
+.about-hero {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.about-heading {
+  font-family: 'DM Serif Display', serif;
+  font-size: clamp(2.25rem, 5vw, 3.25rem);
+  margin: 0;
+}
+
+.about-list {
+  max-width: 640px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.section-card {
+  background-color: var(--card);
+  border-left: 4px solid var(--ink-soft);
+  border-radius: 4px;
+  padding: 1.9rem 2rem;
+  box-shadow: 0 1px 0 rgba(0, 0, 0, 0.04), 0 10px 24px rgba(38, 36, 32, 0.08);
+}
+
+.section-eyebrow {
+  display: inline-block;
+  font-family: 'Space Mono', monospace;
+  font-size: 0.7rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+  margin-bottom: 0.75rem;
+}
+
+.section-title {
+  font-family: 'DM Serif Display', serif;
+  font-size: 1.6rem;
+  margin: 0 0 0.85rem;
+}
+
+.section-body {
+  font-size: 0.98rem;
+  line-height: 1.7;
+  color: var(--ink-soft);
+  margin: 0;
+}
+
+/* tone accents color the left border and eyebrow */
+.tone-green   { border-left-color: var(--green); }
+.tone-green   .section-eyebrow { color: var(--green); }
+.tone-mustard { border-left-color: var(--mustard); }
+.tone-mustard .section-eyebrow { color: var(--mustard); }
+.tone-rust    { border-left-color: var(--rust); }
+.tone-rust    .section-eyebrow { color: var(--rust); }
+.tone-teal    { border-left-color: var(--teal); }
+.tone-teal    .section-eyebrow { color: var(--teal); }
+
+@media (max-width: 560px) {
+  .section-card {
+    padding: 1.4rem 1.4rem;
+  }
+}

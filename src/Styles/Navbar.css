@@ -1,0 +1,97 @@
+/* Navbar.css */
+
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 15px 40px;
+  background-color: #ffffff;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  font-family: "Helvetica Neue", Arial, sans-serif;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+.nav-left,
+.nav-right {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  flex: 1;
+}
+
+.nav-right {
+  justify-content: flex-end;
+}
+
+.navbar a {
+  text-decoration: none;
+  color: #2b2b2b;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  transition: color 0.2s ease;
+  white-space: nowrap;
+
+}
+
+.navbar a:hover {
+  color: #b8860b; /* warm gold accent, matches the Diafa logo tones */
+  cursor: pointer;
+}
+
+.logo {
+  flex: 0 0 auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0 20px;
+}
+
+.logo img {
+height:95px;
+  width: auto;
+  object-fit: contain;
+}
+
+.logo h1 {
+  font-size: 24px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  margin: 0;
+  color: #2b2b2b;
+}
+
+.navbar button {
+  padding: 10px 20px;
+  background-color: #2b2b2b;
+  color: #ffffff;
+  border: none;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.navbar button:hover {
+  background-color: #b8860b;
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+  .navbar {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 12px;
+    padding: 15px 20px;
+  }
+
+  .nav-left,
+  .nav-right {
+    flex: 0 0 100%;
+    justify-content: center;
+  }
+}

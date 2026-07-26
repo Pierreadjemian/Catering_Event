@@ -1,0 +1,119 @@
+
+.auth-page {
+  --cream: #faf6ee;
+  --card: #fffdf8;
+  --ink: #262420;
+  --ink-soft: #6e6656;
+  --mustard: #b5822a;
+  --green: #3e5c46;
+
+  min-height: 100vh;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--cream);
+  padding: 2rem 1.25rem;
+  box-sizing: border-box;
+  font-family: 'DM Sans', sans-serif;
+  color: var(--ink);
+}
+
+.auth-card {
+  width: 100%;
+  max-width: 400px;
+  background-color: var(--card);
+  border-radius: 8px;
+  padding: 2.5rem 2.25rem;
+  box-shadow: 0 1px 0 rgba(0, 0, 0, 0.04), 0 12px 28px rgba(38, 36, 32, 0.08);
+}
+
+.auth-heading {
+  font-family: 'DM Serif Display', serif;
+  font-size: 1.9rem;
+  margin: 0 0 0.5rem;
+  text-align: center;
+}
+
+.auth-sub {
+  font-size: 0.92rem;
+  color: var(--ink-soft);
+  text-align: center;
+  margin: 0 0 2rem;
+}
+
+.auth-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.1rem;
+}
+
+.auth-field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  font-family: 'Space Mono', monospace;
+  font-size: 0.7rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+}
+
+.auth-field input {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.95rem;
+  color: var(--ink);
+  background: var(--cream);
+  border: 1px solid rgba(38, 36, 32, 0.15);
+  border-radius: 4px;
+  padding: 0.7rem 0.8rem;
+}
+
+.auth-field input:focus {
+  outline: none;
+  border-color: var(--mustard);
+}
+
+.auth-submit {
+  margin-top: 0.5rem;
+  font-family: 'Space Mono', monospace;
+  font-size: 0.78rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--card);
+  background: var(--ink);
+  border: none;
+  border-radius: 4px;
+  padding: 0.85rem 1.5rem;
+  cursor: pointer;
+  transition: opacity 0.15s ease;
+}
+
+.auth-submit:hover {
+  opacity: 0.85;
+}
+
+.auth-switch {
+  text-align: center;
+  font-size: 0.88rem;
+  color: var(--ink-soft);
+  margin: 1.75rem 0 0;
+}
+
+.auth-switch-btn {
+  background: none;
+  border: none;
+  padding: 0;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.88rem;
+  font-weight: 500;
+  color: var(--green);
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+@media (max-width: 460px) {
+  .auth-card {
+    padding: 2rem 1.5rem;
+  }
+}

@@ -10,6 +10,9 @@ import {BrowserRouter, Route, Routes} from "react-router-dom";
 import Footer from './Pages/Footer';
 import Login from "./Pages/Login";
 
+
+
+
 function App() {
   return (
      <BrowserRouter>
@@ -22,8 +25,12 @@ function App() {
           <Route path="/things-to-know" element={<ThingsToKnow />}></Route>
           <Route path="/contact" element={<Contact />}></Route>
           <Route path="/Login" element={<Login />}></Route>
+          
+          
+
         </Routes>
         <Footer/>
+      
       </div>
     </BrowserRouter>
   );

@@ -1,23 +1,14 @@
 import { useState } from "react";
 import "../Styles/Login.css";
 import axios from "axios";
-<<<<<<< HEAD
 import { useNavigate, Link } from "react-router-dom";
-=======
-import { useNavigate } from "react-router-dom";
->>>>>>> 8f68285d87355d1212c982dd71a4e463e021d5ab
 
 const API_URL = "http://localhost:8080";
 
 const Login = () => {
-<<<<<<< HEAD
   const [mode, setMode] = useState("login"); // "login" | "signup" | "admin"
   const [form, setForm] = useState({ name: "", email: "", password: "" });
   const [adminForm, setAdminForm] = useState({ username: "", password: "" });
-=======
-  const [mode, setMode] = useState("login");
-  const [form, setForm] = useState({ name: "", email: "", password: "" });
->>>>>>> 8f68285d87355d1212c982dd71a4e463e021d5ab
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
@@ -29,20 +20,16 @@ const Login = () => {
     setForm({ ...form, [e.target.name]: e.target.value });
   };
 
-<<<<<<< HEAD
   const handleAdminChange = (e) => {
     setAdminForm({ ...adminForm, [e.target.name]: e.target.value });
   };
 
-=======
->>>>>>> 8f68285d87355d1212c982dd71a4e463e021d5ab
   const handleSubmit = async (e) => {
     e.preventDefault();
     setError("");
     setLoading(true);
 
     try {
-<<<<<<< HEAD
       if (isAdmin) {
         // Expect backend to expose POST /admin/login
         const res = await axios.post(`${API_URL}/admin/login`, {
@@ -62,8 +49,6 @@ const Login = () => {
         return;
       }
 
-=======
->>>>>>> 8f68285d87355d1212c982dd71a4e463e021d5ab
       if (isSignup) {
         const res = await axios.post(`${API_URL}/signup`, {
           name: form.name,
@@ -81,7 +66,6 @@ const Login = () => {
         });
         console.log("Login success:", res.data);
 
-<<<<<<< HEAD
      const userName = res.data.user.email; // or .name, whichever you want displayed
      localStorage.setItem("users", JSON.stringify(res.data.user)); // store just the user object
      navigate("/Menus", { state: { email: userName } });
@@ -91,19 +75,6 @@ const Login = () => {
         if (err.response.status === 401) {
           setError(isAdmin ? "Invalid admin credentials" : "Invalid credentials");
         } else if (err.response.status === 404) {
-=======
-       
-        const userName = res.data.email;
-
-       
-        localStorage.setItem("users", JSON.stringify(res.data));
-      
-        navigate("/Menus", { state: { email: userName } });
-      }
-    } catch (err) {
-      if (err.response) {
-        if (err.response.status === 404) {
->>>>>>> 8f68285d87355d1212c982dd71a4e463e021d5ab
           setError("User not found");
         } else if (err.response.status === 400) {
           setError(err.response.data.message || "Invalid request");
@@ -117,14 +88,11 @@ const Login = () => {
     } finally {
       setLoading(false);
     }
-<<<<<<< HEAD
   };
 
   const switchMode = (nextMode) => {
     setMode(nextMode);
     setError("");
-=======
->>>>>>> 8f68285d87355d1212c982dd71a4e463e021d5ab
   };
 
   return (
@@ -213,7 +181,6 @@ const Login = () => {
 
           {error && <p className="auth-error">{error}</p>}
 
-<<<<<<< HEAD
           <button type="submit" className="auth-submit" disabled={loading}>
             {loading
               ? "Please wait..."
@@ -222,25 +189,6 @@ const Login = () => {
               : isSignup
               ? "Sign up"
               : "Log in"}
-=======
-          <label className="auth-field">
-            <span>Password</span>
-            <input
-              type="password"
-              name="password"
-              value={form.password}
-              onChange={handleChange}
-              placeholder="••••••••"
-              minLength={8}
-              required
-            />
-          </label>
-
-          {error && <p className="auth-error">{error}</p>}
-
-          <button type="submit" className="auth-submit" disabled={loading}>
-            {loading ? "Please wait..." : isSignup ? "Sign up" : "Log in"}
->>>>>>> 8f68285d87355d1212c982dd71a4e463e021d5ab
           </button>
         </form>
 

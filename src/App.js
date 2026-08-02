@@ -14,14 +14,10 @@ import Users from './Pages/Users';
 import { CartProvider } from './Pages/CartContext';
 import Order from './Pages/Order';
 
-
-
-
 function App() {
   return (
-<<<<<<< HEAD
     <BrowserRouter>
-      <CartProvider>
+      
         <div>
           <Navbar />
           <Routes>
@@ -36,28 +32,10 @@ function App() {
             <Route path="/admin/users" element={<Users />} />
             
           </Routes>
+          <Navbar/>
           <Footer />
         </div>
-      </CartProvider>
-=======
-     <BrowserRouter>
-      <div>
-        <Navbar />
-        <Routes>
-          <Route path="/" element={<Home />}></Route>
-          <Route path="/About" element={<About />}></Route>
-          <Route path="/menus" element={<Menus />}></Route>
-          <Route path="/things-to-know" element={<ThingsToKnow />}></Route>
-          <Route path="/contact" element={<Contact />}></Route>
-          <Route path="/Login" element={<Login />}></Route>
-          
-          
-
-        </Routes>
-        <Footer/>
-      
-      </div>
->>>>>>> 8f68285d87355d1212c982dd71a4e463e021d5ab
+    
     </BrowserRouter>
   );
 }

@@ -32,7 +32,7 @@ function App() {
             <Route path="/admin/users" element={<Users />} />
             
           </Routes>
-          <Navbar/>
+          
           <Footer />
         </div>
     

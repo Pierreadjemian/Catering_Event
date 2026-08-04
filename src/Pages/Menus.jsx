@@ -71,12 +71,13 @@ const [menu, setMenu] = useState([]);
         ) : (
           menu.map((item) => (
             <Item
-              key={item.id}
-              image={item.image}
-              title={item.title}
-              price={`${item.price}$`}
-              description={item.description}
-            />
+  key={item.id}
+  id={item.id}
+  image={item.image}
+  title={item.title}
+  price={item.price}
+  description={item.description}
+/>
           ))
         )}
         

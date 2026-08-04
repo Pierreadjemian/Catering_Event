@@ -143,7 +143,7 @@ app.post('/admin/login', (req, res) => {
   return res.status(401).json({ message: "Invalid admin credentials" });
 });
 
-// SIGNUP
+
 app.post('/signup', (req, res) => {
   const { name, password, email } = req.body;
 
@@ -176,7 +176,7 @@ app.post('/signup', (req, res) => {
   });
 });
 
-// GET all users
+
 app.get("/users", (req, res) => {
   const q = "SELECT id, name, email FROM users ORDER BY id";
   db.query(q, (err, rows) => {
@@ -188,7 +188,7 @@ app.get("/users", (req, res) => {
   });
 });
 
-// PUT update a user
+
 app.put("/users/:id", (req, res) => {
   const { name, email } = req.body;
   const q = "UPDATE users SET name = ?, email = ? WHERE id = ?";
@@ -200,7 +200,7 @@ app.put("/users/:id", (req, res) => {
     res.json({ message: "Updated" });
   });
 });
-// DELETE a user
+
 app.delete("/users/:id", (req, res) => {
   const q = "DELETE FROM users WHERE id = ?";
   db.query(q, [req.params.id], (err) => {

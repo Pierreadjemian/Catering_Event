@@ -1,28 +1,46 @@
+import { Link, useNavigate } from "react-router-dom";
+import { useCart } from "./CartContext";
 import "../Styles/Navbar.css";
-import { Link } from "react-router-dom";
-import logo from "../Images/x.jpeg"; // renamed from the original spaced filename — rename the actual file to match
-import Login from "../Pages/Login";
+import logo from "../Images/x.jpeg"; // adjust path/filename to your actual logo
 
 const Navbar = () => {
+  const { cart, setIsCartOpen, clearCart } = useCart();
+  const navigate = useNavigate();
+
+  const itemCount = cart.reduce((sum, item) => sum + item.quantity, 0);
+  const isLoggedIn = !!localStorage.getItem("users");
+
+  const handleLogout = () => {
+    localStorage.removeItem("users");
+    clearCart();
+    navigate("/Login");
+  };
+
   return (
     <nav className="navbar">
       <div className="nav-left">
-        <div className="logo">
-          <img src={logo} alt="Diafa Catering" />
-          {/* Or use text instead of an image logo:
-          <h1>DIAFA</h1> */}
-        </div>
+        <Link to="/">Home</Link>
+        <Link to="/About">About</Link>
+        <Link to="/menus">Menus</Link>
       </div>
 
-      
+      <div className="logo">
+        <img src={logo} alt="Diafa" />
+      </div>
+
       <div className="nav-right">
-        <Link to="/">HOME</Link>
-        <Link to="/menus">MENU</Link>
-        <Link to="/about">ABOUT US</Link>
-        <Link to="/things-to-know">THINGS TO KNOW</Link>
-        <Link to="/contact">GET IN TOUCH</Link>
- 
-        <Link to="/Login"><button>Login/Signup</button></Link>
+        <Link to="/things-to-know">Things to Know</Link>
+        <Link to="/contact">Contact</Link>
+        {!isLoggedIn && <Link to="/Login">Login</Link>}
+
+        <button className="cart-icon-btn" onClick={() => setIsCartOpen(true)}>
+          🛒
+          {itemCount > 0 && <span className="cart-badge">{itemCount}</span>}
+        </button>
+
+        {isLoggedIn && (
+          <button onClick={handleLogout}>Logout</button>
+        )}
       </div>
     </nav>
   );

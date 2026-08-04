@@ -9,15 +9,16 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Footer from './Pages/Footer';
 import Login from "./Pages/Login";
 import Cart from './Pages/Cart';
+import Checkout from './Pages/Checkout';
 import Admin from './Pages/Admin';
 import Users from './Pages/Users';
-import { CartProvider } from './Pages/CartContext';
-import Order from './Pages/Order';
+import { CartProvider } from "./Pages/CartContext";
+import CartSidebar from "./Pages/CartSidebar";
 
 function App() {
   return (
     <BrowserRouter>
-      
+      <CartProvider>
         <div>
           <Navbar />
           <Routes>
@@ -28,14 +29,14 @@ function App() {
             <Route path="/contact" element={<Contact />}></Route>
             <Route path="/Login" element={<Login />}></Route>
             <Route path="/cart" element={<Cart />}></Route>
+            <Route path="/checkout" element={<Checkout />}></Route>
             <Route path="/admin" element={<Admin />}></Route>
             <Route path="/admin/users" element={<Users />} />
-            
           </Routes>
-          
           <Footer />
+          <CartSidebar />
         </div>
-    
+      </CartProvider>
     </BrowserRouter>
   );
 }

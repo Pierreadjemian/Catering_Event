@@ -38,14 +38,14 @@ const Admin = () => {
     fetchItems();
   }, []);
 
-  const handleInsert = async () => {
+  const handleInsert = async () => {// addin a new menu item and saving it in the db 
     if (!newItem.title || !newItem.price) return;
     try {
       await axios.post(`${API_URL}/menu_item`, newItem);
       setNewItem(emptyForm);
       fetchItems();
     } catch (err) {
-      setError("Could not add item");
+      setError("Could not add item");// if there is any error and could not add items
       console.log(err);
     }
   };
@@ -60,7 +60,7 @@ const Admin = () => {
     setEditForm(emptyForm);
   };
 
-  const handleUpdate = async (id) => {
+  const handleUpdate = async (id) => {// updating any existing menu item using id
     try {
       await axios.put(`${API_URL}/menu_item/${id}`, editForm);
       cancelEdit();
@@ -71,7 +71,7 @@ const Admin = () => {
     }
   };
 
-  const handleDelete = async (id) => {
+  const handleDelete = async (id) => {//deleting any menu item using db 
     if (!window.confirm("Delete this menu item?")) return;
     try {
       await axios.delete(`${API_URL}/menu_item/${id}`);

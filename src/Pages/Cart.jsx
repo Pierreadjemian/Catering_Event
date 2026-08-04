@@ -1,78 +1,58 @@
-import { useState } from "react";
-import { useCart, parsePrice } from "../Pages/CartContext";
-import "../Styles/Cart.css";
-
+import { useCart } from "./CartContext";
+import "../Styles/Admin.css";
 
 const Cart = () => {
-  const { cartItems, removeFromCart, updateQty, clearCart, cartTotal } = useCart();
-  const [checkedOut, setCheckedOut] = useState(false);
-
-  const handleCheckout = () => setCheckedOut(true);
-
-  if (cartItems.length === 0 && !checkedOut) {
-    return (
-      <div className="cart-page">
-        <h1>Your Cart</h1>
-        <p className="cart-empty">Your cart is empty. Go add some dishes from the Menu!</p>
-      </div>
-    );
-  }
+  const { cart, increment, decrement, removeFromCart, total, checkout } = useCart();
+  
 
   return (
-    <div className="cart-page">
+    <div className="admin-page">
       <h1>Your Cart</h1>
 
-      <div className="cart-list">
-        {cartItems.map((item) => (
-          <div className="cart-item" key={item.title}>
-            <img src={item.image} alt={item.title} />
+      <table className="admin-table">
+        <thead>
+          <tr>
+            <th>Image</th>
+            <th>Title</th>
+            <th>Price</th>
+            <th>Quantity</th>
+            <th>Subtotal</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          {cart.length === 0 ? (
+            <tr><td colSpan={6}>Your cart is empty</td></tr>
+          ) : (
+            cart.map((item) => (
+              <tr key={item.id}>
+                <td>{item.image && <img src={item.image} alt={item.title} width="60" />}</td>
+                <td>{item.title}</td>
+                <td>{item.price}$</td>
+                <td className="admin-actions">
+                  <button onClick={() => decrement(item.id)}>-</button>
+                  <span style={{ margin: "0 10px" }}>{item.quantity}</span>
+                  <button onClick={() => increment(item.id)}>+</button>
+                </td>
+                <td>{(item.price * item.quantity).toFixed(2)}$</td>
+                <td className="admin-actions">
+                  <button className="admin-delete-btn" onClick={() => removeFromCart(item.id)}>Remove</button>
+                </td>
+              </tr>
+            ))
+          )}
+        </tbody>
+      </table>
 
-            <div className="cart-item-info">
-              <p className="cart-item-title">{item.title}</p>
-              <p className="cart-item-desc">{item.description}</p>
-              <p className="cart-item-price">{item.price}</p>
-            </div>
-
-            <div className="cart-item-qty">
-              <button onClick={() => updateQty(item.title, item.qty - 1)}>-</button>
-              <span>{item.qty}</span>
-              <button onClick={() => updateQty(item.title, item.qty + 1)}>+</button>
-            </div>
-
-            <p className="cart-item-subtotal">
-              ${(parsePrice(item.price) * item.qty).toFixed(2)}
-            </p>
-
-            <button
-              className="cart-remove-btn"
-              onClick={() => removeFromCart(item.title)}
-            >
-              Remove
-            </button>
-          </div>
-        ))}
-      </div>
-
-      {!checkedOut ? (
-        <div className="cart-footer">
-          <button className="checkout-btn" onClick={handleCheckout}>
-            Checkout
-          </button>
-        </div>
-      ) : (
-        <div className="checkout-summary">
-          <h2>Total: ${cartTotal.toFixed(2)}</h2>
-          <button
-            className="confirm-btn"
-            onClick={() => {
-              clearCart();
-              setCheckedOut(false);
-            }}
-          >
-            Confirm Order
-          </button>
-        </div>
+      {cart.length > 0 && (
+        <>
+          <h2 style={{ marginTop: "20px" }}>Total: {total.toFixed(2)}$</h2>
+<button className="checkout-btn" onClick={checkout}>
+  Checkout
+</button>
+        </>
       )}
+    
     </div>
   );
 };
